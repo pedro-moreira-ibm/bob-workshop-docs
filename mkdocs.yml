@@ -1,0 +1,44 @@
+site_name: IBM Bob Hands-on Labs
+site_description: Hands-on workshop labs for IBM Bob.
+repo_url: ""
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Lab 1: lab1/index.md
+  - Lab 2: lab2/index.md
+  - Lab 3: lab3/index.md
+  - Lab 4: lab4/index.md
+  - Lab 5: lab5/index.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+      toc_depth: 2
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+
+not_in_nav: |
+  lab2/application.zip
+  lab3/vulnerable-app/**
+  lab3/vulnerable-app.zip
+  lab4/source/**
+  lab4/source.zip
+  lab5/legacy/**
+  lab5/legacy-app.zip
