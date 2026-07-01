@@ -1,0 +1,1000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hands-on workshop labs for IBM Bob.">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../lab2/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Lab 1 - IBM Bob Hands-on Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-1-building-a-to-do-application-with-bob" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Bob Hands-on Labs" class="md-header__button md-logo" aria-label="IBM Bob Hands-on Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Bob Hands-on Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Bob Hands-on Labs" class="md-nav__button md-logo" aria-label="IBM Bob Hands-on Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    IBM Bob Hands-on Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab 1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Starting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You'll Build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Set up your project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-introduction-to-bob-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Introduction to Bob Modes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Backend development
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-frontend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Frontend Development
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-test-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Test your application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-compare-your-application-with-the-other-participants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Compare your application with the other participants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-reached-the-end-of-this-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Congratulations 🎉 You’ve reached the end of this lab!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Starting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      What You'll Build
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Set up your project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-introduction-to-bob-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Introduction to Bob Modes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-backend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Backend development
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-frontend-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Frontend Development
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-test-your-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Test your application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-compare-your-application-with-the-other-participants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Compare your application with the other participants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#congratulations-youve-reached-the-end-of-this-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Congratulations 🎉 You’ve reached the end of this lab!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lab-1-building-a-to-do-application-with-bob">Lab 1: Building a To Do application with Bob<a class="headerlink" href="#lab-1-building-a-to-do-application-with-bob" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>In this lab, you'll learn to use Bob's AI-powered features to build a complete full-stack To Do application from scratch. You'll experience Bob's different modes, auto-approvals, and code generation.</p>
+<h2 id="before-starting">Before Starting<a class="headerlink" href="#before-starting" title="Permanent link">&para;</a></h2>
+<p>Make sure you have:</p>
+<ul>
+<li>IBM Bob access</li>
+<li>Python 3.8+</li>
+<li>Node.js 14+</li>
+<li>A terminal</li>
+<li>A local workspace where Bob can create files and run commands</li>
+</ul>
+<h2 id="what-youll-build">What You'll Build<a class="headerlink" href="#what-youll-build" title="Permanent link">&para;</a></h2>
+<p>A full-stack To Do application with:</p>
+<ul>
+<li><strong>Backend</strong>: Python Flask REST API with SQLite database</li>
+<li><strong>Frontend</strong>: Modern JavaScript single-page application</li>
+<li><strong>Features</strong>: Create, read, update, and delete To Dos</li>
+</ul>
+<h2 id="lab-structure">Lab Structure<a class="headerlink" href="#lab-structure" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#step-1-set-up-your-project">Set up your project</a></li>
+<li><a href="#step-2-introduction-to-bob-modes">Introduction to Bob Modes</a></li>
+<li><a href="#step-3-backend-development">Backend Development</a></li>
+<li><a href="#step-4-frontend-development">Frontend Development</a></li>
+<li><a href="#step-5-test-your-application">Test your application</a></li>
+</ul>
+<hr />
+<h2 id="step-1-set-up-your-project">Step 1: Set up your project<a class="headerlink" href="#step-1-set-up-your-project" title="Permanent link">&para;</a></h2>
+<h3 id="11-create-and-open-the-project-folder">1.1: Create and open the project folder<a class="headerlink" href="#11-create-and-open-the-project-folder" title="Permanent link">&para;</a></h3>
+<p>Create a new folder on your computer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bob-lab1
+</code></pre></div>
+<p>Open this folder in IBM Bob.</p>
+<p><img alt="1" src="images/1.png"></p>
+<p><strong>✅ Checkpoint</strong>: Your workspace is ready to start working.</p>
+<h2 id="step-2-introduction-to-bob-modes">Step 2: Introduction to Bob Modes<a class="headerlink" href="#step-2-introduction-to-bob-modes" title="Permanent link">&para;</a></h2>
+<h3 id="21-understanding-bob-modes">2.1: Understanding Bob Modes<a class="headerlink" href="#21-understanding-bob-modes" title="Permanent link">&para;</a></h3>
+<p>Bob has three built-in modes, each optimized for a different type of task. The built-in modes you'll use in this lab are:</p>
+<h4 id="agent-mode">🤖 Agent Mode<a class="headerlink" href="#agent-mode" title="Permanent link">&para;</a></h4>
+<p><strong>When to use</strong>: Writing, modifying, refactoring, or improving code</p>
+<ul>
+<li>Implement features</li>
+<li>Create new files</li>
+<li>Modify existing code</li>
+<li>Fix bugs</li>
+<li>Refactor code</li>
+<li>Run tools and tests as part of development work</li>
+</ul>
+<h4 id="plan-mode">🎯 Plan Mode<a class="headerlink" href="#plan-mode" title="Permanent link">&para;</a></h4>
+<p><strong>When to use</strong>: Planning, designing, or strategizing before implementation</p>
+<ul>
+<li>Analyze requirements</li>
+<li>Research technical approaches</li>
+<li>Design project structures</li>
+<li>Plan API endpoints</li>
+<li>Plan database schemas</li>
+<li>Make architectural decisions</li>
+<li>Break complex tasks into clear implementation steps</li>
+</ul>
+<h4 id="ask-mode">❓ Ask Mode<a class="headerlink" href="#ask-mode" title="Permanent link">&para;</a></h4>
+<p><strong>When to use</strong>: Learning, understanding, or getting technical help</p>
+<ul>
+<li>Explain code concepts</li>
+<li>Analyze existing code</li>
+<li>Get documentation-style answers</li>
+<li>Understand errors</li>
+<li>Learn best practices</li>
+<li>Ask technical questions without changing code</li>
+</ul>
+<blockquote>
+<p><strong>🎯 Bob Differentiator: <a href="https://bob.ibm.com/docs/ide/configuration/custom-modes">Customizable Modes</a></strong></p>
+</blockquote>
+<p>Bob's mode system is one of its key differentiators. Bob allows you to create custom modes tailored to your team's specific workflows.</p>
+<h3 id="22-plan-your-project">2.2: Plan your project<a class="headerlink" href="#22-plan-your-project" title="Permanent link">&para;</a></h3>
+<p>Switch to <strong>Plan Mode</strong> and ask Bob:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>I want to create a To Do application with a Python Flask backend and JavaScript frontend.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Please help me plan:
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>1. Project directory structure
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>2. API endpoints needed
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>3. Database schema
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>4. Technology stack recommendations
+</code></pre></div>
+<p><img alt="2" src="images/2.png"></p>
+<p><img alt="3" src="images/3.png"></p>
+<p><strong>Bob's Interactive Approach:</strong></p>
+<p>Before providing a plan, Bob will ask clarifying questions to understand your requirements better. This is a key differentiator - Bob lets you drive the process while making helpful suggestions.</p>
+<p>Bob might ask:</p>
+<ul>
+<li>"How complex should the application be?"</li>
+<li>"Which database would you prefer (SQLite, PostgreSQL, MySQL)?"</li>
+<li>"Do you need user authentication?"</li>
+<li>"Should we include additional features like categories or priorities?"</li>
+</ul>
+<p><strong>For this lab, respond with basic requirements:</strong></p>
+<ul>
+<li>Simple/basic complexity</li>
+<li>SQLite database (no installation needed)</li>
+<li>No user authentication</li>
+<li>Basic CRUD operations only</li>
+</ul>
+<p><img alt="4" src="images/4.png"></p>
+<p>This collaborative approach ensures Bob will build exactly what you need, and will not assume what you want.</p>
+<p><strong>✅ Checkpoint</strong>: Bob provided you with a comprehensive plan that matches your requests.</p>
+<hr />
+<h2 id="step-3-backend-development">Step 3: Backend development<a class="headerlink" href="#step-3-backend-development" title="Permanent link">&para;</a></h2>
+<p>Now let's build the backend for your application using Bob's Agent mode.</p>
+<h3 id="31-switch-to-agent-mode">3.1: Switch to Agent Mode<a class="headerlink" href="#31-switch-to-agent-mode" title="Permanent link">&para;</a></h3>
+<p>Change from Plan to <strong>Agent mode</strong>.</p>
+<p><img alt="5" src="images/5.png"></p>
+<h3 id="32-create-the-backend-structure">3.2: Create the backend structure<a class="headerlink" href="#32-create-the-backend-structure" title="Permanent link">&para;</a></h3>
+<p><strong>Prompt for Bob:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Create a Flask backend for the To Do app with the following files:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>1. app.py - Main Flask application with CORS enabled
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>2. models.py - SQLAlchemy To Do model
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>3. database.py - Database initialization
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>4. requirements.txt - Python dependencies
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>The To Do model should have: id, title, description, completed (boolean), created_at (timestamp)
+</code></pre></div>
+<p><img alt="6" src="images/6.png"></p>
+<p>Bob should generate all the necessary files regarding your backend structure. Review each file as Bob creates them.</p>
+<h3 id="33-implement-rest-api-endpoints">3.3: Implement REST API Endpoints<a class="headerlink" href="#33-implement-rest-api-endpoints" title="Permanent link">&para;</a></h3>
+<p><strong>Prompt for Bob:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Implement the following REST API endpoints in app.py:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- GET /api/To Dos - List all To Dos
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>- POST /api/To Dos - Create a new To Do
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- PUT /api/To Dos/&lt;id&gt; - Update a To Do
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- DELETE /api/To Dos/&lt;id&gt; - Delete a To Do
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Include proper error handling and JSON responses.
+</code></pre></div>
+<p><img alt="7" src="images/7.png"></p>
+<h3 id="34-review-generated-code">3.4 Review Generated Code<a class="headerlink" href="#34-review-generated-code" title="Permanent link">&para;</a></h3>
+<p>As a best practice, you should review all files generated by Bob to verify that the generated code, logic and overall implementation meet your expectations.</p>
+<p>Example:</p>
+<p><strong>app.py</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flask_cors</span><span class="w"> </span><span class="kn">import</span> <span class="n">CORS</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">models</span><span class="w"> </span><span class="kn">import</span> <span class="n">To</span> <span class="n">Do</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">database</span><span class="w"> </span><span class="kn">import</span> <span class="n">db</span><span class="p">,</span> <span class="n">init_db</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SQLALCHEMY_DATABASE_URI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sqlite:///To Dos.db&#39;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SQLALCHEMY_TRACK_MODIFICATIONS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">CORS</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">init_db</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/To Dos&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_To</span> <span class="n">Dos</span><span class="p">():</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">To</span> <span class="n">Dos</span> <span class="o">=</span> <span class="n">To</span> <span class="n">Do</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="k">return</span> <span class="n">jsonify</span><span class="p">([</span><span class="n">To</span> <span class="n">Do</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">To</span> <span class="n">Do</span> <span class="ow">in</span> <span class="n">To</span> <span class="n">Dos</span><span class="p">])</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/To Dos&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_To</span> <span class="n">Do</span><span class="p">():</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">get_json</span><span class="p">()</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="n">To</span> <span class="n">Do</span> <span class="o">=</span> <span class="n">To</span> <span class="n">Do</span><span class="p">(</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>        <span class="n">title</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>        <span class="n">description</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="n">completed</span><span class="o">=</span><span class="kc">False</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="p">)</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">To</span> <span class="n">Do</span><span class="p">)</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">To</span> <span class="n">Do</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()),</span> <span class="mi">201</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="c1"># Additional endpoints...</span>
+</code></pre></div></p>
+<h3 id="35-create-unit-test-cases-and-run-them">3.5: Create Unit Test Cases and run them<a class="headerlink" href="#35-create-unit-test-cases-and-run-them" title="Permanent link">&para;</a></h3>
+<p>Unit test cases are small checks that verify if individual parts of an application are working correctly, helping catch errors early and before they affect the whole application.</p>
+<p><strong>Prompt for Bob:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Create<span class="w"> </span>unit<span class="w"> </span><span class="nb">test</span><span class="w"> </span>cases<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>api<span class="w"> </span>endpoints,<span class="w"> </span>and<span class="w"> </span>ensure<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span><span class="m">90</span>%<span class="w"> </span>code<span class="w"> </span>coverage.
+</code></pre></div>
+<h3 id="36-run-the-backend">3.6: Run the Backend<a class="headerlink" href="#36-run-the-backend" title="Permanent link">&para;</a></h3>
+<p>Let's ask Bob how to run the backend.</p>
+<p><strong>Prompt for Bob:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>How<span class="w"> </span>can<span class="w"> </span>I<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>backend<span class="w"> </span>application?
+</code></pre></div>
+<p>Bob should quickly identify the necessary commands to run the backend.</p>
+<p align="center">
+  <img src="images/8.png" alt="8" width="400"/>
+</p>
+
+<p>Follow the instructions and run those commands in your terminal.</p>
+<p><img alt="9" src="images/9.png"></p>
+<p><strong>✅ Checkpoint</strong>: Backend is running without errors.</p>
+<hr />
+<h2 id="step-4-frontend-development">Step 4: Frontend Development<a class="headerlink" href="#step-4-frontend-development" title="Permanent link">&para;</a></h2>
+<p>Now, let's create the frontend (user interface).</p>
+<h3 id="41-create-frontend-structure">4.1: Create Frontend Structure<a class="headerlink" href="#41-create-frontend-structure" title="Permanent link">&para;</a></h3>
+<p><strong>Prompt for Bob (still in Agent mode):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Create a frontend for the To Do app with:
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>1. index.html - Main HTML structure with a clean, modern design
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>2. styles.css - Responsive CSS styling
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>3. app.js - JavaScript for API interactions
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Include:
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>- Input field for new To Dos
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>- List to display To Dos
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>- Buttons for complete and delete actions
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>- Responsive design for mobile and desktop
+</code></pre></div>
+<h3 id="42-understanding-literate-coding">4.2: Understanding Literate Coding<a class="headerlink" href="#42-understanding-literate-coding" title="Permanent link">&para;</a></h3>
+<p><strong>Literate coding</strong> is the practice of writing code that is self-explanatory through clear structure, meaningful naming conventions, and well-placed comments. The goal is not only to create functional software but also to make the code easy to understand, maintain, and evolve over time. This approach enhances collaboration among developers and helps non-technical stakeholders better understand how the application works and behaves.</p>
+<p><strong>Prompt for Bob:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>In app.js, use literate coding to explain:
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>- How the API calls work
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>- Why we use async/await
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>- How error handling is implemented
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>- The purpose of each function
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Add detailed comments that would help a beginner understand the code.
+</code></pre></div>
+<h3 id="43-review-frontend-code">4.3 Review Frontend Code<a class="headerlink" href="#43-review-frontend-code" title="Permanent link">&para;</a></h3>
+<p>As a best practice, you should review all files generated by Bob to verify that the generated code, logic and overall implementation meet your expectations.</p>
+<p>Example:</p>
+<p><strong>app.js</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cm">/**</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cm"> * To Do Application - Frontend JavaScript</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="cm"> * </span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="cm"> * This file handles all interactions between the user interface</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="cm"> * and the Flask backend API. We use modern JavaScript features</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="cm"> * like async/await for cleaner asynchronous code.</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="cm"> */</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1">// API base URL - points to our Flask backend</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">API_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;http://localhost:5000/api/To Dos&#39;</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="cm">/**</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="cm"> * Fetches all To Dos from the backend API</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="cm"> * </span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="cm"> * This function demonstrates the async/await pattern:</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="cm"> * - &#39;async&#39; keyword allows us to use &#39;await&#39; inside</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="cm"> * - &#39;await&#39; pauses execution until the promise resolves</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="cm"> * - This makes asynchronous code look synchronous and easier to read</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="cm"> * </span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="cm"> * @returns {Promise&lt;void&gt;}</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="cm"> */</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchTo</span><span class="w"> </span><span class="nx">Dos</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">        </span><span class="c1">// Make GET request to backend</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">API_URL</span><span class="p">);</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">        </span><span class="c1">// Parse JSON response</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">To</span><span class="w"> </span><span class="nx">Dos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">        </span><span class="c1">// Update the UI with fetched To Dos</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">        </span><span class="nx">displayTo</span><span class="w"> </span><span class="nx">Dos</span><span class="p">(</span><span class="nx">To</span><span class="w"> </span><span class="nx">Dos</span><span class="p">);</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">        </span><span class="c1">// Handle any errors (network issues, server errors, etc.)</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error fetching To Dos:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">        </span><span class="nx">showError</span><span class="p">(</span><span class="s1">&#39;Failed to load To Dos. Please try again.&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="p">}</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="cm">/**</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="cm"> * Creates a new To Do item</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="cm"> * </span>
+<a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="cm"> * This function shows how to make a POST request with JSON data.</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a><span class="cm"> * We use the Fetch API which returns promises, making it perfect</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="cm"> * for async/await syntax.</span>
+<a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="cm"> * </span>
+<a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="cm"> * @param {string} title - The To Do title</span>
+<a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="cm"> * @param {string} description - The To Do description</span>
+<a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="cm"> */</span>
+<a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createTo</span><span class="w"> </span><span class="nx">Do</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">API_URL</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a><span class="w">            </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a><span class="w">            </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a><span class="w">                </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a><span class="w">            </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a><span class="w">        </span><span class="p">});</span>
+<a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a>
+<a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a><span class="w">            </span><span class="c1">// Refresh the To Do list</span>
+<a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a><span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchTo</span><span class="w"> </span><span class="nx">Dos</span><span class="p">();</span>
+<a id="__codelineno-9-62" name="__codelineno-9-62" href="#__codelineno-9-62"></a><span class="w">            </span><span class="c1">// Clear the input form</span>
+<a id="__codelineno-9-63" name="__codelineno-9-63" href="#__codelineno-9-63"></a><span class="w">            </span><span class="nx">clearForm</span><span class="p">();</span>
+<a id="__codelineno-9-64" name="__codelineno-9-64" href="#__codelineno-9-64"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-65" name="__codelineno-9-65" href="#__codelineno-9-65"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-66" name="__codelineno-9-66" href="#__codelineno-9-66"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error creating To Do:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<a id="__codelineno-9-67" name="__codelineno-9-67" href="#__codelineno-9-67"></a><span class="w">        </span><span class="nx">showError</span><span class="p">(</span><span class="s1">&#39;Failed to create To Do. Please try again.&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-68" name="__codelineno-9-68" href="#__codelineno-9-68"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-69" name="__codelineno-9-69" href="#__codelineno-9-69"></a><span class="p">}</span>
+<a id="__codelineno-9-70" name="__codelineno-9-70" href="#__codelineno-9-70"></a>
+<a id="__codelineno-9-71" name="__codelineno-9-71" href="#__codelineno-9-71"></a><span class="c1">// Additional functions with detailed explanations...</span>
+</code></pre></div></p>
+<h3 id="44-open-the-frontend">4.4: Open the frontend<a class="headerlink" href="#44-open-the-frontend" title="Permanent link">&para;</a></h3>
+<p><strong>For Windows Users</strong>:</p>
+<p>Open your application's frontend by right-clicking the <code>index.html</code> file and then selecting "Open with Live Server".</p>
+<p><img alt="10" src="images/10.png"></p>
+<p><img alt="11" src="images/11.png"></p>
+<p><strong>For macOS Users</strong>:</p>
+<p>Right-click the <code>index.html</code> file and select "Reveal in Finder"</p>
+<p><img alt="12" src="images/12.png"></p>
+<p>Then just open the file in your browser of choice.</p>
+<p><img alt="13" src="images/13.png"></p>
+<p>The frontend should now be open, as shown below. Keep in mind that your frontend may look different, since the prompts we provided to Bob were not very detailed. This gave Bob flexibility to make certain implementation and design decisions independently.</p>
+<p><img alt="14" src="images/14.png"></p>
+<p><strong>✅ Checkpoint</strong>: Frontend loads and displays the User Interface.</p>
+<hr />
+<h2 id="step-5-test-your-application">Step 5: Test your application<a class="headerlink" href="#step-5-test-your-application" title="Permanent link">&para;</a></h2>
+<p>Explore and try the frontend you opened in the previous step. Some testing examples:</p>
+<p><strong>Create a To Do:</strong>
+1. Enter a title: "Learn Bob"
+2. Enter a description: "Complete all three labs"
+3. Click "Add To Do"
+4. ✅ To Do appears in the list</p>
+<p><strong>Mark as Complete:</strong>
+1. Click the "Complete" button on a To Do
+2. ✅ To Do shows as completed (strikethrough or checkmark)</p>
+<p><strong>Delete a To Do:</strong>
+1. Click the "Delete" button on a To Do
+2. ✅ To Do is removed from the list</p>
+<p><strong>Refresh Page:</strong>
+1. Refresh the browser
+2. ✅ To Dos persist (stored in database)</p>
+<p><img alt="15" src="images/15.png"></p>
+<hr />
+<h2 id="step-6-compare-your-application-with-the-other-participants">Step 6: Compare your application with the other participants<a class="headerlink" href="#step-6-compare-your-application-with-the-other-participants" title="Permanent link">&para;</a></h2>
+<p>Do the applications look the same? Are there any differences?</p>
+<p>Differences are completely normal and even expected. Since the prompts used in this exercise were intentionally high-level, Bob had flexibility in how certain features and design elements were implemented.</p>
+<p>In real projects, teams typically reduce these variations by providing more detailed prompts, design guidelines, and specification/rules files. These artifacts help standardize implementations and ensure greater consistency across applications.</p>
+<hr />
+<h2 id="congratulations-youve-reached-the-end-of-this-lab">Congratulations 🎉 You’ve reached the end of this lab!<a class="headerlink" href="#congratulations-youve-reached-the-end-of-this-lab" title="Permanent link">&para;</a></h2>
+<p>You've successfully completed this lab! You've learned to:</p>
+<ul>
+<li>✅ Use Bob modes for different tasks</li>
+<li>✅ Apply literate coding principles</li>
+<li>✅ Build a complete full-stack application</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "toc.follow", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
